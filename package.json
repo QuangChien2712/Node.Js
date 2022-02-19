@@ -1,22 +1,29 @@
 {
-  "name": "testnodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/QuangChien2712/Node.Js.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/QuangChien2712/Node.Js/issues"
-  },
-  "homepage": "https://github.com/QuangChien2712/Node.Js#readme",
-  "dependencies": {
-    "express": "4.17.3"
-  }
+    "name": "testnodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon --exec ./node_modules/.bin/babel-node src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/QuangChien2712/Node.Js.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/QuangChien2712/Node.Js/issues"
+    },
+    "homepage": "https://github.com/QuangChien2712/Node.Js#readme",
+    "dependencies": {
+        "@babel/core": "7.17.5",
+        "@babel/node": "7.16.8",
+        "@babel/preset-env": "7.16.11",
+        "body-parser": "1.19.2",
+        "ejs": "3.1.6",
+        "express": "4.17.3",
+        "nodemon": "2.0.15"
+    }
 }
