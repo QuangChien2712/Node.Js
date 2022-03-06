@@ -11,7 +11,8 @@ let getHomePage = (req, res) => {
                     firtName: row.firtName,
                     lastName: row.lastName,
                     email: row.email,
-                    address: row.address
+                    createdAt: row.createdAt,
+                    updatedAt: row.updatedAt
                 })
             })
             return res.render("index.ejs", { dataUser: JSON.stringify(data) })
