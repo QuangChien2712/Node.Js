@@ -9,7 +9,6 @@ const port = process.env.PORT || 8080
 configViewEngine(app);
 initWebRoute(app);
 
-// console.log(process.env);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

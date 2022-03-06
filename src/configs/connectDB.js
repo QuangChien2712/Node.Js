@@ -1,29 +1,25 @@
-// export default connection;
-const mysql = require("mysql2");
+const { Sequelize } = require('sequelize');
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "nodejsbasic",
-    port: 3306,
-    charset: "utf8mb4"
+const sequelize = new Sequelize('nodejsbasic', 'root', 'root', {
+    host: 'localhost',
+    dialect: 'mysql',
+    logging: false // Không in log ra màn hình console
 });
 
+// Test thử kết nối đến DB chưa.
+let connectDB = async() => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+};
 
-// connection.query(
-//     'SELECT * FROM `users`',
-//     function(err, results, fields) {
-//         console.log("Checkout sucess");
-//         console.log(results); // results contains rows returned by server
-//         console.log(fields); // fields contains extra meta data about results, if available
-//     }
-// );
+connectDB();
+//
 
-module.exports = connection;
-
-
-
+module.exports = sequelize;
 
 
 
