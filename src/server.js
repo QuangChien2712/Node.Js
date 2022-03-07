@@ -3,8 +3,14 @@ import express from 'express'
 import configViewEngine from './configs/viewEngine'
 import initWebRoute from './route/web'
 
-const app = express()
 const port = process.env.PORT || 8080
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const app = express()
+
+app.use(morgan('combined'));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 configViewEngine(app);
 initWebRoute(app);

@@ -1,15 +1,27 @@
 import db from '../db/models/index'
+import CRUDService from '../services/CRUDService'
+
 
 let getHomePage = async(req, res) => {
     try {
         let data = await db.User.findAll();
-        console.log(data); // In kết quả ra console
         return res.render("index.ejs", { data: JSON.stringify(data) });
     } catch (error) {
         console.log(error);
     }
 }
 
+let getCRUD = (req, res) => {
+    return res.render('crud.ejs');
+}
+
+let postCRUD = (req, res) => {
+    CRUDService.createNewUser(req.body);
+    return res.send('Post HTTP');
+}
+
 module.exports = {
-    getHomePage
+    getHomePage: getHomePage,
+    getCRUD: getCRUD,
+    postCRUD: postCRUD,
 }
