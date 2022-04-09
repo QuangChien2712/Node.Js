@@ -1,19 +1,20 @@
 import express from "express";
-import homeController from "../controllers/homeController"
+import homeController from "../controllers/homeController";
+import userController from "../controllers/userController";
 
 let router = express.Router();
 
 const initWebRoute = (app) => {
+    router.get("/", homeController.getHomePage);
+    router.get("/crud", homeController.getFormCRUD);
+    router.post("/post-crud", homeController.postCRUD);
+    router.get("/get-crud", homeController.getCRUD);
+    router.get("/edit-crud", homeController.editCRUD);
+    router.post("/put-crud", homeController.putCRUD);
+    router.get("/delete-crud", homeController.deleteCRUD);
+    router.post("/api/login", userController.handleLogin);
 
-    router.get('/', homeController.getHomePage);
-    router.get('/crud', homeController.getFormCRUD);
-    router.post('/post-crud', homeController.postCRUD);
-    router.get('/get-crud', homeController.getCRUD);
-    router.get('/edit-crud', homeController.editCRUD);
-    router.post('/put-crud', homeController.putCRUD);
-    router.get('/delete-crud', homeController.deleteCRUD);
+    return app.use("/", router);
+};
 
-    return app.use('/', router);
-}
-
-module.exports = initWebRoute
+module.exports = initWebRoute;

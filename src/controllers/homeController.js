@@ -49,7 +49,11 @@ let deleteCRUD = async(req, res) => {
     let id = req.query.id;
     if (id) {
         await CRUDService.deleteUserbyId(id);
-        return res.send('Delete success!');
+        // return res.send('Delete success!');
+        let data = await CRUDService.getAllUser();
+        return res.render('displayGetCRUD.ejs', {
+            dataTable: data
+        });
     } else {
         res.send('User not found!')
     }
