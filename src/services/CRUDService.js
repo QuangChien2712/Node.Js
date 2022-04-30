@@ -60,11 +60,21 @@ let updateUserData = (data) => {
             let userdata = await db.User.findOne({
                 where: { id: data.id },
             });
+
+            // if (userdata) {
+            //     userdata.firstName = data.firstname;
+            //     userdata.lastName = data.lastname;
+            //     userdata.address = data.address;
+            //     await userdata.save();
+            // }
+
             if (userdata) {
-                userdata.firstName = data.firstname;
-                userdata.lastName = data.lastname;
-                userdata.address = data.address;
-                await userdata.save();
+                await db.User.upsert({
+                    id: data.id,
+                    firstName: data.firstname,
+                    lastName: data.lastname,
+                    address: data.address,
+                });
             }
             resolve();
         } catch (error) {
