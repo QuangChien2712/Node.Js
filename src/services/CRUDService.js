@@ -92,7 +92,7 @@ let deleteUserbyId = (uid) => {
             });
             if (userdata) {
                 // await userdata.destroy();
-                db.User.destroy({ where: { id: uid } });
+                await db.User.destroy({ where: { id: uid } });
             }
             resolve();
         } catch (error) {
