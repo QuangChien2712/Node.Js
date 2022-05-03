@@ -97,24 +97,25 @@ let createNewUser = (data) => {
             if (check === true) {
                 resolve({
                     errCode: 1,
-                    message: "Your email is already in Users",
+                    errMessage: "Your email is already in Users",
+                });
+            } else {
+                let hashpassword = hashUserPassword(data.password);
+                db.User.create({
+                    email: data.email,
+                    password: hashpassword,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                    phoneNumber: data.phonenumber,
+                    gender: data.gender === "1" ? true : false,
+                    roleId: data.roleId,
+                });
+                resolve({
+                    errCode: 0,
+                    errMessage: "Ok",
                 });
             }
-            let hashpassword = hashUserPassword(data.password);
-            db.User.create({
-                email: data.email,
-                password: hashpassword,
-                firstName: data.firstname,
-                lastName: data.lastname,
-                address: data.address,
-                phoneNumber: data.phonenumber,
-                gender: data.gender === "1" ? true : false,
-                roleId: data.roleId,
-            });
-            resolve({
-                errCode: 0,
-                message: "Ok",
-            });
         } catch (error) {
             reject(error);
         }
@@ -130,7 +131,7 @@ let deleteUser = (uid) => {
             if (!userdata) {
                 resolve({
                     errCode: 2,
-                    message: `The user isn't exist`,
+                    errMessage: `The user isn't exist`,
                 });
             }
             // await userdata.destroy(); userdata phải là instance của sequelize mới destroy được. Vì config query raw = true nên không còn là thể hiện nữa nên phải chọc trực tiếp từ db
@@ -138,7 +139,7 @@ let deleteUser = (uid) => {
 
             resolve({
                 errCode: 0,
-                message: "User has been deleted successfully!",
+                errMessage: "User has been deleted successfully!",
             });
         } catch (error) {
             reject(error);
@@ -152,7 +153,7 @@ let updateUserData = (data) => {
             if (!data.id) {
                 resolve({
                     errCode: 2,
-                    message: "Missing required parametters!",
+                    errMessage: "Missing required parametters!",
                 });
             }
 
@@ -164,18 +165,18 @@ let updateUserData = (data) => {
                 await db.User.upsert({
                     id: data.id,
                     email: data.email,
-                    firstName: data.firstname,
-                    lastName: data.lastname,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
                     address: data.address,
                 });
                 resolve({
                     errCode: 0,
-                    message: "Update the User succeeds!",
+                    errMessage: "Update the User succeeds!",
                 });
             } else {
                 resolve({
                     errCode: 1,
-                    message: `User isn't found!`,
+                    errMessage: `User isn't found!`,
                 });
             }
         } catch (error) {
