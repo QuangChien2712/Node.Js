@@ -110,7 +110,8 @@ let createNewUser = (data) => {
                     phoneNumber: data.phonenumber,
                     gender: data.gender,
                     roleId: data.roleId,
-                    positionId: data.positionId
+                    positionId: data.positionId,
+                    image: data.avatar
                 });
                 resolve({
                     errCode: 0,
@@ -173,7 +174,8 @@ let updateUserData = (data) => {
                     roleId: data.roleId,
                     positionId: data.positionId,
                     gender: data.gender,
-                    phoneNumber: data.phoneNumber
+                    phoneNumber: data.phoneNumber,
+                    image: data.avatar
                 });
                 resolve({
                     errCode: 0,
