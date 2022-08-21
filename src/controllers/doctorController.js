@@ -44,6 +44,7 @@ let postInforDoctor = async(req, res) => {
 let getDetailDoctorById = async(req, res) => {
     try {
         let infor = await doctorService.getDetailDoctorById(req.query.id);
+        console.log("infor doctorController.js là: ", infor);
         return res.status(200).json(infor);
     } catch (error) {
         console.log(error);
