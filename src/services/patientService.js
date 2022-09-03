@@ -6,9 +6,7 @@ let postBookAppointment = (data) => {
     return new Promise(async(resolve, reject) => {
         try {
 
-            if (!data.email || !data.doctorId || !data.timeType ||
-                !data.date
-            ) {
+            if (!data.email || !data.doctorId || !data.timeType || !data.date) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing Parameter",
@@ -22,7 +20,7 @@ let postBookAppointment = (data) => {
                         roleId: "R3"
                     }
                 });
-                console.log("Chien check User: ", user[0]);
+                console.log("Chien check User0: ", user[0]);
 
                 if (user && user[0]) {
                     await db.Booking.findOrCreate({
