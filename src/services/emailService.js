@@ -2,6 +2,7 @@ require('dotenv').config();
 const nodemailer = require("nodemailer");
 // import nodemailer from "nodemailer";
 
+
 let sendSimpleEmail = async(dataSend) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
