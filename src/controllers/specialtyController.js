@@ -13,6 +13,21 @@ let createSpecialty = async(req, res) => {
     }
 }
 
+let getAllSpecialty = async(req, res) => {
+    try {
+        let infor = await specialtyService.getAllSpecialty();
+        console.log("Infor data specialtyController là: ", infor);
+        return res.status(200).json(infor);
+    } catch (error) {
+        console.log(error);
+        return res.status(200).json({
+            errCode: -1,
+            message: "Error from the server"
+        })
+    }
+}
+
 module.exports = {
-    createSpecialty: createSpecialty
+    createSpecialty: createSpecialty,
+    getAllSpecialty: getAllSpecialty
 }
