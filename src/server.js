@@ -4,6 +4,7 @@ import configViewEngine from "./configs/viewEngine";
 import initWebRoute from "./route/web";
 import cors from "cors";
 
+
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const morgan = require("morgan");

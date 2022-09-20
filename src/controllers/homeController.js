@@ -1,6 +1,10 @@
 import db from "../db/models/index";
 import CRUDService from "../services/CRUDService";
 
+let getDBusers = (req, res) => {
+    return res.send("Võ Quang Chiến namecheap");
+}
+
 let getHomePage = async(req, res) => {
     try {
         let data = await db.User.findAll();
@@ -65,4 +69,5 @@ module.exports = {
     editCRUD: editCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
+    getDBusers: getDBusers
 };

@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('nodejsbasic', 'root', 'root', {
-    host: 'localhost',
+const sequelize = new Sequelize('heroku_f4dbd9019809a1c', 'b8eb027d8b5b94', '3e833c10', {
+    host: 'us-cdbr-east-06.cleardb.net',
     dialect: 'mysql',
     logging: false // Không in log ra màn hình console
 });

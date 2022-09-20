@@ -10,6 +10,7 @@ import clinicController from "../controllers/clinicController";
 let router = express.Router();
 
 const initWebRoute = (app) => {
+    router.get("/test", homeController.getDBusers);
     router.get("/", homeController.getHomePage);
     router.get("/crud", homeController.getFormCRUD);
     router.post("/post-crud", homeController.postCRUD);
